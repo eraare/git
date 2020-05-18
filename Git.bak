@@ -1,0 +1,157 @@
+Git 是世界上最先进的分布式版本控制系统。
+Linus 在 2005 年使用 C 语言用时 2 周完成。
+CVS (Concurrent Version System), SVN (Subversion) 集中式版本控制系统。
+
+$ git
+$ sudo apt-get install git
+
+$ git config --global user.name "r00kie"
+$ git config --global user.email "r00kie@126.com"
+
+$ mkdir learngit
+$ cd learngit
+$ pwd
+
+$ touch readme.txt
+$ cat readme.txt
+
+$ git init
+$ git add readme.txt
+$ git commit -m "wrote a readme file"
+
+$ git status
+$ git diff readme.txt
+
+$ git log
+$ git log --pretty=oneline
+$ git reset --hard HEAD^
+$ git reset --hard HEAD^^
+$ git reset --hard HEAD~3
+$ git reset --hard 4e8be
+$ git reflog
+
+工作区（Workspace）
+-版本库（Repository）.git
+--暂存区（Stage）
+--分支（Branch）master
+---头指针（HEAD）
+工作区 add 暂存区 commit 分支
+
+$ git diff HEAD -- readme.txt
+
+$ git checkout -- readme.txt
+$ git reset HEAD readme.txt
+
+$ rm test.txt
+$ git rm test.txt
+$ git commit -m "remove test.txt"
+
+$ ssh-keygen -t rsa -C "r00kie@126.com"
+id_rsa id_rsa.pub
+
+$ git remote add origin https://github.com/eraare/learngit.git
+$ git push -u origin master
+$ git push origin master
+
+$ git clone https://github.com/eraare/gitskills.git
+
+$ git checkout -b dev
+$ git branch dev
+$ git checkout dev
+$ git branch
+$ git checkout master
+$ git merge dev
+$ git branch -d dev
+$ git switch -c dev
+$ git switch master
+
+$ git checkout -b feature1
+$ git add readme.txt
+$ git commit -m "AND simple"
+$ git checkout master
+$ git add readme.txt
+$ git commit -m "& simple"
+$ git merge feature1
+$ git log --graph --pretty=oneline --abbrev-commit
+
+$ git checkout -b dev
+$ git add readme.txt
+$ git commit -m "add merge"
+$ git checkout master
+$ git merge --no-ff -m "merge with no-ff" dev
+
+master
+dev
+leo
+alice
+
+$ git stash
+$ git stash list
+$ git stash apply stash@{0}
+$ git stash drop
+$ git stash pop
+$ git cherry-pick 4c805e2
+
+$ git branch -D feature-vulcan
+
+$ git remote
+$ git remote -v
+$ git push origin master
+$ git push origin dev
+$ git checkout -b dev origin/dev
+$ git pull
+$ git branch --set-upstream-to=origin/dev dev
+$ git pull
+$ git rebase
+
+$ git tag v1.0
+$ git tag
+$ git tag v0.9 f52c633
+$ git show v0.9
+$ git tag -a v0.1 -m "version 0.1 released" 1094adb
+$ git tag -d v0.1
+$ git push origin v1.0
+$ git push origin --tags
+$ git tag -d v0.9
+$ git push origin :refs/tags/v0.9
+
+GitHub
+twbs/bootstrap -> my/bootstrap -> local/bootstrap
+pull request
+
+Gitee gitee.com
+
+$ git remote rm origin
+
+$ git config --global color.ui true
+
+.gitignore
+
+$ git add -f App.class
+$ git check-ignore -v App.class
+
+$ git config --global alias.st status
+$ git config --global alias.co checkout
+$ git config --global alias.ci commit
+$ git config --global alias.br branch
+$ git config --global alias.unstage 'reset HEAD'
+$ git config --global alias.last 'log -1'
+
+.git/config
+
+$ sudo apt-get install git
+$ sudo adduser git
+id_rsa.pub -> /home/git/.ssh/authorized_keys
+$ sudo git init --bare sample.git
+$ sudo chown -R git:git sample.git
+# /etc/passwd 
+git:x:1001:1001:,,,:/home/git:/bin/bash
+git:x:1001:1001:,,,:/home/git:/usr/bin/git-shell
+$ git clone git@server:/srv/sample.git
+# Gitosis 管理公钥
+# Gitolite 权限控制
+
+SourceTree
+
+https://git-scm.com/
+https://gitee.com/liaoxuefeng/learn-java/raw/master/teach/git-cheatsheet.pdf
