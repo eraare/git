@@ -1,21 +1,45 @@
+Git
+1. 基本概述
+2. 安装配置
+3. 常用操作
+4. 远程仓库
+5. 分支管理
+6. 标签管理
+7. 自建服务
+
+
+1. 基本概述
 Git 是世界上最先进的分布式版本控制系统。
 Linus 在 2005 年使用 C 语言用时 2 周完成。
 CVS (Concurrent Version System), SVN (Subversion) 集中式版本控制系统。
 
+
+2. 安装配置
 $ git
 $ sudo apt-get install git
 
 $ git config --global user.name "r00kie"
 $ git config --global user.email "r00kie@126.com"
 
+$ git config --global alias.st status
+$ git config --global alias.co checkout
+$ git config --global alias.ci commit
+$ git config --global alias.br branch
+$ git config --global alias.unstage 'reset HEAD'
+$ git config --global alias.last 'log -1'
+
+.git/config
+
+
+3. 常用操作
 $ mkdir learngit
 $ cd learngit
 $ pwd
 
 $ touch readme.txt
+$ git init
 $ cat readme.txt
 
-$ git init
 $ git add readme.txt
 $ git commit -m "wrote a readme file"
 
@@ -46,6 +70,8 @@ $ rm test.txt
 $ git rm test.txt
 $ git commit -m "remove test.txt"
 
+
+4. 远程仓库
 $ ssh-keygen -t rsa -C "r00kie@126.com"
 id_rsa id_rsa.pub
 
@@ -55,6 +81,23 @@ $ git push origin master
 
 $ git clone https://github.com/eraare/gitskills.git
 
+GitHub
+twbs/bootstrap -> my/bootstrap -> local/bootstrap
+pull request
+
+Gitee gitee.com
+
+$ git remote rm origin
+
+$ git config --global color.ui true
+
+.gitignore
+
+$ git add -f App.class
+$ git check-ignore -v App.class
+
+
+5. 分支管理
 $ git checkout -b dev
 $ git branch dev
 $ git checkout dev
@@ -104,6 +147,8 @@ $ git branch --set-upstream-to=origin/dev dev
 $ git pull
 $ git rebase
 
+
+6. 标签管理
 $ git tag v1.0
 $ git tag
 $ git tag v0.9 f52c633
@@ -115,30 +160,8 @@ $ git push origin --tags
 $ git tag -d v0.9
 $ git push origin :refs/tags/v0.9
 
-GitHub
-twbs/bootstrap -> my/bootstrap -> local/bootstrap
-pull request
 
-Gitee gitee.com
-
-$ git remote rm origin
-
-$ git config --global color.ui true
-
-.gitignore
-
-$ git add -f App.class
-$ git check-ignore -v App.class
-
-$ git config --global alias.st status
-$ git config --global alias.co checkout
-$ git config --global alias.ci commit
-$ git config --global alias.br branch
-$ git config --global alias.unstage 'reset HEAD'
-$ git config --global alias.last 'log -1'
-
-.git/config
-
+7. 自建服务
 $ sudo apt-get install git
 $ sudo adduser git
 id_rsa.pub -> /home/git/.ssh/authorized_keys
